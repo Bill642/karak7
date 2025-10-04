@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karak Scholars Bootcamp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #bb86fc;
+      --primary-dark: #9a67ea;
+      --secondary: #03dac6;
+      --dark-bg: #121212;
+      --card-bg: #1e1e1e;
+      --accent: #3700b3;
+      --text: #e0e0e0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg), #2c003e);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .title {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+      animation: glow 2s infinite alternate;
+    }
+    
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(187, 134, 252, 0.3);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(187, 134, 252, 0.6), 0 0 30px rgba(187, 134, 252, 0.4);
+      }
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: var(--text);
+    }
+    
+    .age-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    
+    /* Cards Section */
+    .cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(187, 134, 252, 0.1);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--secondary);
+      margin: 15px 0;
+    }
+    
+    /* Teaching Methods */
+    .teaching-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 50px;
+      justify-content: center;
+    }
+    
+    .method-card {
+      flex: 1;
+      min-width: 250px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .method-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .method-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, var(--accent), #1a0033);
+      border-radius: 15px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(187, 134, 252, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      animation: pulse 6s infinite linear;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .cta-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: #000;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Floating Elements */
+    .floating {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .floating-1 {
+      top: 10%;
+      left: 5%;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    
+    .floating-2 {
+      top: 20%;
+      right: 10%;
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+    
+    .floating-3 {
+      bottom: 15%;
+      left: 8%;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--text);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2.5rem;
+      }
+      
+      .cards-section {
+        grid-template-columns: 1fr;
+      }
+      
+      .teaching-section {
+        flex-direction: column;
+      }
+      
+      .floating {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="floating floating-1">🤖</div>
+      <div class="floating floating-2">💻</div>
+      <div class="floating floating-3">🚀</div>
+      
+      <h1 class="title">KARAK SCHOLARS</h1>
+      <p class="subtitle">Tech Bootcamp for Future Innovators</p>
+      <div class="age-badge">Ages 6–18 | 10 Weeks Program</div>
+    </header>
+    
+    <section class="cards-section">
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>AI & Robotics</h3>
+        <p>Learn to build and program intelligent robots using cutting-edge AI technology. Create projects that can see, hear, and make decisions.</p>
+        <div class="price">Ksh 2,500 / lesson</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>Game Development</h3>
+        <p>Design and develop your own video games. Learn game mechanics, character design, and programming for interactive experiences.</p>
+        <div class="price">Ksh 2,000 / lesson</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Website Development</h3>
+        <p>Build modern, responsive websites from scratch. Learn HTML, CSS, JavaScript and create your own portfolio of web projects.</p>
+        <div class="price">Ksh 1,800 / lesson</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Mobile App Development</h3>
+        <p>Create mobile applications for iOS and Android. Learn to design user interfaces and develop functional apps for real-world use.</p>
+        <div class="price">Ksh 1,800 / lesson</div>
+      </div>
+    </section>
+    
+    <section class="teaching-section">
+      <div class="method-card">
+        <div class="method-icon">👨‍🏫</div>
+        <h3>One-on-One Sessions</h3>
+        <p>Personalized attention with dedicated instructors tailored to your learning pace and interests.</p>
+      </div>
+      
+      <div class="method-card">
+        <div class="method-icon">👥</div>
+        <h3>Group Sessions</h3>
+        <p>Collaborative learning environment where students work together on projects and share ideas.</p>
+      </div>
+    </section>
+    
+    <section class="cta-section">
+      <h2 class="cta-title">Limited Slots Available!</h2>
+      <p class="cta-subtitle">Don't miss this opportunity to equip your child with future-proof tech skills. Enroll today and watch them become the innovators of tomorrow.</p>
+      <a href="tel:+254731100361" class="cta-button">
+        <i class="fas fa-phone-alt"></i> Call Now: 0731 100 361
+      </a>
+    </section>
+    
+    <footer>
+      <p>© 2023 Karak Scholars Bootcamp. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Add interactive animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add scroll animations
+      const cards = document.querySelectorAll('.card');
+      const methods = document.querySelectorAll('.method-card');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+      
+      // Set initial state for animation
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+      
+      methods.forEach(method => {
+        method.style.opacity = '0';
+        method.style.transform = 'translateY(20px)';
+        method.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(method);
+      });
+      
+      // Add hover effect to CTA button
+      const ctaButton = document.querySelector('.cta-button');
+      ctaButton.addEventListener('mouseenter', function() {
+        this.style.background = 'linear-gradient(45deg, var(--secondary), var(--primary))';
+      });
+      
+      ctaButton.addEventListener('mouseleave', function() {
+        this.style.background = 'linear-gradient(45deg, var(--primary), var(--secondary))';
+      });
+    });
+  </script>
+</body>
+</html>
